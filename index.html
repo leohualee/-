@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>學生分組計分系統</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>學生分組計分系統</h1>
+        
+        <div class="header-controls">
+            <div class="select-class">
+                <label for="classNameInput">班級名稱：</label>
+                <input type="text" id="classNameInput" placeholder="例如: 1年1班" value="1年1班">
+            </div>
+            <div class="import-data">
+                <label for="fileInput">匯入學生名單 (Excel/CSV)：</label>
+                <input type="file" id="fileInput" accept=".xlsx, .xls, .csv">
+                <button id="importBtn">匯入名單</button>
+            </div>
+        </div>
+
+        <div class="seating-chart-grid">
+            </div>
+
+        <div class="summary-section">
+            <h2>成績總覽</h2>
+            <div id="scoreSummary">
+                </div>
+        </div>
+
+        <div class="download-section">
+            <button id="downloadExcelBtn">下載 Excel 表格</button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

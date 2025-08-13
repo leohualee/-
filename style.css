@@ -1,0 +1,263 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 10px;
+    background-color: #f0f2f5;
+    margin: 0;
+}
+
+.container {
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 960px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #333;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+h3 {
+    text-align: center;
+    color: #555;
+    margin: 0 0 10px 0;
+}
+
+.header-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.select-class, .import-data {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#classNameInput, #fileInput, .import-data button {
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 0.9em;
+}
+
+#classNameInput {
+    width: 80px;
+}
+
+.import-data button {
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+}
+
+.import-data button:hover {
+    background-color: #0056b3;
+}
+
+.seating-chart-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+/* 調整座位區塊的樣式 */
+.group {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 8px;
+    background-color: #f8f9fa;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+}
+
+.group-title {
+    grid-column: 1 / -1;
+    text-align: center;
+    margin: 0 0 5px 0;
+    font-size: 1em;
+}
+
+.seat {
+    background-color: #e9ecef;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 0.75em;
+    min-width: 80px;
+}
+
+.seat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+}
+
+.seat-row-1 {
+    font-weight: bold;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.student-id {
+    font-size: 1em;
+    font-weight: normal;
+}
+
+.student-name {
+    font-size: 1em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: left;
+    flex-grow: 1;
+}
+
+.project-score-group {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.project-score-group select {
+    padding: 2px;
+    font-size: 0.8em;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.plus-score {
+    font-size: 0.9em;
+    color: #555;
+    white-space: nowrap;
+}
+
+.score-control {
+    display: flex;
+    gap: 2px;
+}
+
+.score-control button {
+    width: 25px;
+    height: 25px;
+    background-color: #6c757d;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.score-control button:hover {
+    background-color: #5a6268;
+}
+
+.summary-section {
+    margin-top: 10px;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    border-left: 3px solid #007bff;
+    font-size: 0.8em;
+}
+
+#scoreSummary p {
+    margin: 3px 0;
+}
+
+.download-section {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.download-section button {
+    padding: 6px 12px;
+    background-color: #17a2b8;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+}
+
+.download-section button:hover {
+    background-color: #138496;
+}
+
+/* RWD 響應式網頁設計 */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 1.3em;
+    }
+
+    .header-controls {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .select-class, .import-data {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    #classNameInput {
+        width: 60%;
+    }
+    
+    .import-data label {
+        flex-grow: 1;
+    }
+    
+    #fileInput {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .seating-chart-grid {
+        grid-template-columns: 1fr;
+        gap: 5px;
+    }
+    
+    .group {
+        grid-template-columns: 1fr;
+        padding: 5px;
+        gap: 3px;
+    }
+
+    .group-title {
+        font-size: 1em;
+    }
+
+    .seat {
+        min-width: unset;
+        padding: 5px;
+        font-size: 0.8em;
+    }
+
+    .student-name {
+        font-size: 0.9em;
+    }
+}
