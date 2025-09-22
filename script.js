@@ -3,7 +3,6 @@ const classNameInput = document.getElementById('classNameInput');
 const fileInput = document.getElementById('fileInput');
 const importBtn = document.getElementById('importBtn');
 const seatingChartGrid = document.querySelector('.seating-chart-grid');
-const scoreSummary = document.getElementById('scoreSummary');
 const downloadExcelBtn = document.getElementById('downloadExcelBtn');
 
 // 儲存學生資料的物件，鍵是座位ID，值是學生資料
@@ -167,7 +166,6 @@ function processImportedData(data) {
     alert(`成功匯入 ${studentData.length} 位學生名單到 ${currentClassName}！`);
     
     createSeatingChart();
-    updateSummary();
 }
 
 // 建立座位表的主要函式
@@ -182,7 +180,8 @@ function createSeatingChart() {
         groups[student.group][student.seat] = student;
     });
 
-    const groupOrder = [4, 5, 6, 1, 2, 3];
+    // 修正組別順序為 1, 2, 3, 4, 5, 6
+    const groupOrder = [1, 2, 3, 4, 5, 6];
     groupOrder.forEach(i => {
         const groupElement = document.createElement('div');
         groupElement.classList.add('group');
@@ -250,7 +249,6 @@ function updateProjectGrade(seatId) {
     const select = document.getElementById(`project-grade-select-${seatId}`);
     students[seatId].projectGrade = select.value;
     updateStudentTotalScore(seatId);
-    updateSummary();
 }
 
 // 更新作品調整分數
@@ -258,7 +256,6 @@ function updateProjectModifier(seatId) {
     const select = document.getElementById(`project-modifier-select-${seatId}`);
     students[seatId].projectModifier = select.value;
     updateStudentTotalScore(seatId);
-    updateSummary();
 }
 
 // 增加「加分總」分數
@@ -269,7 +266,6 @@ function incrementPlusScore(seatId) {
     students[seatId].plusScore += 1;
     updatePlusScoreDisplay(seatId);
     updateStudentTotalScore(seatId);
-    updateSummary();
 }
 
 // 減少「加分總」分數 (已允許負分)
@@ -280,7 +276,6 @@ function decrementPlusScore(seatId) {
     students[seatId].plusScore -= 1;
     updatePlusScoreDisplay(seatId);
     updateStudentTotalScore(seatId);
-    updateSummary();
 }
 
 // 更新單一學生總分
@@ -296,18 +291,6 @@ function updateStudentTotalScore(seatId) {
 function updatePlusScoreDisplay(seatId) {
     const student = students[seatId];
     document.getElementById(`plus-score-display-${student.seat}`).textContent = student.plusScore;
-}
-
-// 更新成績總覽區塊
-function updateSummary() {
-    scoreSummary.innerHTML = '';
-    const sortedStudents = Object.values(students).sort((a, b) => a.id - b.id);
-    sortedStudents.forEach(student => {
-        const p = document.createElement('p');
-        const modifierText = student.projectModifier === '無' ? '' : student.projectModifier;
-        p.textContent = `第 ${student.group} 組 - ${student.name}: 加分總 ${student.plusScore} + 作品分數 (${student.projectGrade}${modifierText}) ${student.projectScore} = 總分 ${student.totalScore}`;
-        scoreSummary.appendChild(p);
-    });
 }
 
 // 匯出資料到 Excel 檔案 
